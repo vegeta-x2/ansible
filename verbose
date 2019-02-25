@@ -1,0 +1,77 @@
+The full traceback is:
+
+Traceback (most recent call last):
+
+  File "/usr/local/lib/python3.6/site-packages/ansible/plugins/connection/paramiko_ssh.py", line 362, in _connect_uncached
+
+    **ssh_connect_kwargs
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 437, in connect
+
+    passphrase,
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 749, in _auth
+
+    raise saved_exception
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 720, in _auth
+
+    filename, pkey_class, passphrase
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/client.py", line 571, in _key_from_filepath
+
+    key = klass.from_private_key_file(key_path, password)
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/pkey.py", line 206, in from_private_key_file
+
+    key = cls(filename=filename, password=password)
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/rsakey.py", line 55, in __init__
+
+    self._from_private_key_file(filename, password)
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/rsakey.py", line 175, in _from_private_key_file
+
+    data = self._read_private_key_file("RSA", filename, password)
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/pkey.py", line 279, in _read_private_key_file
+
+    data = self._read_private_key(tag, f, password)
+
+  File "/usr/local/lib/python3.6/site-packages/paramiko/pkey.py", line 329, in _read_private_key
+
+    raise PasswordRequiredException("Private key file is encrypted")
+
+paramiko.ssh_exception.PasswordRequiredException: Private key file is encrypted
+
+ 
+
+During handling of the above exception, another exception occurred:
+
+ 
+
+Traceback (most recent call last):
+
+  File "/usr/local/bin/ansible-connection", line 106, in start
+
+    self.connection._connect()
+
+  File "/usr/local/lib/python3.6/site-packages/ansible/plugins/connection/network_cli.py", line 309, in _connect
+
+    ssh = self.paramiko_conn._connect()
+
+  File "/usr/local/lib/python3.6/site-packages/ansible/plugins/connection/paramiko_ssh.py", line 255, in _connect
+
+    self.ssh = SSH_CONNECTION_CACHE[cache_key] = self._connect_uncached()
+
+  File "/usr/local/lib/python3.6/site-packages/ansible/plugins/connection/paramiko_ssh.py", line 368, in _connect_uncached
+
+    raise AnsibleAuthenticationFailure(msg)
+
+ansible.errors.AnsibleAuthenticationFailure: Invalid/incorrect username/password. Private key file is encrypted
+
+ 
+
+fatal: [vegeta01_temp]: FAILED! => {
+
+    "msg": "Invalid/incorrect username/password. Private key file is encrypted"
