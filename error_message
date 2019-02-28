@@ -1,0 +1,39 @@
+
+
+[root@ansiblevm ansible]# ansible-playbook playbooks/acl.yaml  
+ [WARNING]:  * Failed to parse /etc/ansible/inventory/hosts with script plugin: problem running /etc/ansible/inventory/hosts --list ([Errno 8] Exec format error: '/etc/ansible/inventory/hosts')
+
+ [WARNING]:  * Failed to parse /etc/ansible/inventory/hosts with yaml plugin: Syntax Error while loading YAML.   expected '<document start>', but found '<scalar>'  The error appears to have been in
+'/etc/ansible/inventory/hosts': line 2, column 1, but may be elsewhere in the file depending on the exact syntax problem.  The offending line appears to be:  [sjc_core] vegeta01_temp ^ here
+
+ [WARNING]:  * Failed to parse /etc/ansible/inventory/hosts with ini plugin: /etc/ansible/inventory/hosts:7: Expected key=value, got: ansible_user: vegeta
+
+ [WARNING]: Unable to parse /etc/ansible/inventory/hosts as an inventory source
+
+ [WARNING]: No inventory was parsed, only implicit localhost is available
+
+ [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+ 
+ 
+ PLAY [NXOS_ACL's] ****************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************************************************************************************************
+fatal: [vegeta01_temp]: FAILED! => {"msg": "Invalid/incorrect username/password. Private key file is encrypted"}
+fatal: [vegeta02_temp]: FAILED! => {"msg": "Invalid/incorrect username/password. Private key file is encrypted"}
+        to retry, use: --limit @/etc/ansible/playbooks/acl.retry
+		
+------------------------------------------------------------------------------------------------------------------------------	
+
+*******Inventory host file location "/etc/ansible/inventory/hosts " ******
+
+[sjc_core]
+sjc-rswcore01_temp
+sjc-rswcore02_temp
+
+
+[sjc_core:vars]
+ansible_user: vegeta
+ansible_ssh_pass: abc123
+
+	
+		
