@@ -1,0 +1,17 @@
+---
+
+- name: VLAN
+  hosts: vegeta01_temp
+
+  vars:
+    ansible_network_os: nxos
+    ansible_user: vegeta
+    ansible_ssh_pass: abc123
+
+
+  tasks:
+    - name: my vlan
+      nxos_vlan:
+        vlan_id: 50
+        admin_state: up
+        name: veglan
