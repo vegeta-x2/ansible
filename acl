@@ -25,7 +25,7 @@
         state: present
 
     - nxos_acl:
-        name: management_access_in
+        name: management
         seq: 200
         action: permit
         proto: tcp
@@ -36,7 +36,7 @@
         state: present
 
     - nxos_acl:
-        name: management_access_in
+        name: management
         seq: 250
         action: permit
         proto: tcp
@@ -47,7 +47,7 @@
         state: present    
 
     - nxos_acl:
-        name: management_access_in
+        name: management
         seq: 300
         action: permit
         proto: tcp
